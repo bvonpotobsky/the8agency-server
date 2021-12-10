@@ -3,6 +3,13 @@ const cors = require("cors");
 
 const routerAPI = require("./routes/");
 
+const {
+  logErrorHandler,
+  ormErrorHandler,
+  boomErrorHandler,
+  errorHandler,
+} = require("./middlewares/error.handler");
+
 const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -20,6 +27,11 @@ const options = {
 app.use(cors(options));
 
 routerAPI(app);
+
+app.use(logErrorHandler);
+app.use(ormErrorHandler);
+app.use(boomErrorHandler);
+app.use(errorHandler);
 
 const PORT = process.env.PORT || 3005;
 app.listen(PORT, () => {

@@ -11,23 +11,23 @@ const { createAssistantSchema } = require("../schemas/assistant.schema");
 router.post(
   "/",
   validatorHandler(createAssistantSchema, "body"),
-  async (req, res) => {
+  async (req, res, next) => {
     try {
       const { body } = req;
       const newAssistant = await service.createAssistant(body);
       res.status(201).json(newAssistant);
     } catch (error) {
-      res.status(400).json({ error: error.message });
+      next(error);
     }
   }
 );
 
-router.get("/", async (req, res) => {
+router.get("/", async (req, res, next) => {
   try {
     const assistants = await service.getAllAssistants();
     res.status(200).json(assistants);
   } catch (error) {
-    res.status(400).json({ error: error.message });
+    next(error);
   }
 });
 
