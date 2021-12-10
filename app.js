@@ -1,13 +1,27 @@
 const express = require("express");
 const cors = require("cors");
 
+const routerAPI = require("./routes/");
+
 const app = express();
 app.use(express.json());
-app.use(cors());
 app.use(express.urlencoded({ extended: true }));
 
-const PORT = process.env.PORT || 3005;
+const whitelist = ["http://localhost:3005", "https://myappgoeshere.com"];
+const options = {
+  origin: (origin, callback) => {
+    if (whitelist.includes(origin) || !origin) {
+      callback(null, true);
+    } else {
+      callback(new Error("Access Denied"));
+    }
+  },
+};
+app.use(cors(options));
 
+routerAPI(app);
+
+const PORT = process.env.PORT || 3005;
 app.listen(PORT, () => {
   console.log(`App running on port ${PORT}`);
 });
