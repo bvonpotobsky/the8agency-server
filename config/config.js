@@ -9,6 +9,8 @@ const config = {
   dbName: process.env.DB_NAME,
   dbPort: process.env.DB_PORT,
   dbDialect: process.env.DB_DIALECT,
+  nodemailerEmail: process.env.NODEMAILER_EMAIL,
+  nodemailerPassword: process.env.NODEMAILER_PASSWORD,
 };
 
 module.exports = { config };
