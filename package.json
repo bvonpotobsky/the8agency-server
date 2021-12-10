@@ -14,10 +14,12 @@
   "author": "Benjamín von Potobskt <bvonpotobsky.com>",
   "license": "ISC",
   "dependencies": {
+    "@hapi/boom": "^9.1.4",
     "cors": "^2.8.5",
     "dotenv": "^10.0.0",
     "express": "^4.17.1",
-    "joi": "^17.5.0"
+    "joi": "^17.5.0",
+    "pg": "^8.7.1"
   },
   "devDependencies": {
     "eslint": "^8.4.1",
