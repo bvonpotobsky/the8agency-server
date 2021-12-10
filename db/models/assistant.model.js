@@ -36,6 +36,12 @@ const AssistantSchema = {
     allowNull: false,
     field: "job_title",
   },
+  createdAt: {
+    allowNull: false,
+    type: DataTypes.DATE,
+    field: "created_at",
+    defaultValue: Sequelize.NOW,
+  },
 };
 
 class Assistant extends Model {
