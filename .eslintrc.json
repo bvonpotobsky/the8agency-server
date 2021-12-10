@@ -1,0 +1,15 @@
+{
+  "parserOptions": {
+    "ecmaVersion": "latest"
+  },
+  "extends": ["eslint:recommended", "prettier"],
+  "env": {
+    "es6": true,
+    "jest": true,
+    "node": true,
+    "react": false
+  },
+  "rules": {
+    "no-console": "warn"
+  }
+}
