@@ -1,5 +1,6 @@
 const express = require("express");
 const cors = require("cors");
+const passport = require("passport");
 
 const routerAPI = require("./routes/");
 
@@ -14,7 +15,10 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-const whitelist = ["http://localhost:3005", "https://myappgoeshere.com"];
+require("./utils/auth");
+app.use(passport.initialize());
+
+const whitelist = ["http://localhost:3000", "https://myappgoeshere.com"];
 const options = {
   origin: (origin, callback) => {
     if (whitelist.includes(origin) || !origin) {

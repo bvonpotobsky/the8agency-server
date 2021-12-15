@@ -11,6 +11,7 @@ const config = {
   dbDialect: process.env.DB_DIALECT,
   nodemailerEmail: process.env.NODEMAILER_EMAIL,
   nodemailerPassword: process.env.NODEMAILER_PASSWORD,
+  jwtSecret: process.env.JWT_SECRET,
 };
 
 module.exports = { config };
